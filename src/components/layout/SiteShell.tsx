@@ -6,7 +6,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CookieBanner } from "@/components/layout/CookieBanner";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
-import { LoaderSpinner } from "@/components/ui/LoaderSpinner";
+import { PageSkeleton } from "@/components/ui/SkeletonBlocks";
 
 const FOCUS_ROUTES = ["/energy/request-a-quote", "/apply"];
 
@@ -20,11 +20,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
   }, []);
 
   if (!hydrated) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <LoaderSpinner label="LiGHT" />
-      </div>
-    );
+    return <PageSkeleton />;
   }
 
   if (focused) {

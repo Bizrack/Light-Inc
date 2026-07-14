@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { PageHero } from "@/components/ui/PageHero";
+import { MediaImage } from "@/components/ui/MediaImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { ENERGY_NAV } from "@/lib/content";
@@ -51,8 +51,8 @@ export function ContentPage({
               <Button href={ctaHref}>{ctaLabel}</Button>
             </div>
           </Reveal>
-          <Reveal delay={0.08} className="img-hover relative min-h-[440px] overflow-hidden">
-            <Image src={image} alt="" fill className="object-cover" sizes="50vw" />
+          <Reveal delay={0.08} className="img-hover relative min-h-[440px] overflow-hidden bg-[#14110c]">
+            <MediaImage src={image} alt="" fill className="object-cover" sizes="50vw" />
           </Reveal>
         </div>
       </section>

@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Factory, Globe2, HardHat } from "lucide-react";
 import { COMPANY } from "@/lib/content";
 import { Button } from "@/components/ui/Button";
+import { MediaImage } from "@/components/ui/MediaImage";
 
 const INTRO =
   "LiGHT Incorporation is a diversified engineering and technology company delivering innovative solutions across renewable energy, infrastructure, construction, and emerging industries. We partner with businesses, governments, and communities to build sustainable systems that improve lives and drive long-term growth.";
@@ -75,7 +75,7 @@ export function HomeHero() {
               <source src={slide.video} type="video/mp4" />
             </video>
           ) : null}
-          <Image
+          <MediaImage
             src={slide.image}
             alt=""
             fill

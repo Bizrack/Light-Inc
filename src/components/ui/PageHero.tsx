@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { MediaImage } from "@/components/ui/MediaImage";
 import { Reveal } from "@/components/ui/Reveal";
 
 type Props = {
@@ -14,14 +14,7 @@ type Props = {
 export function PageHero({ eyebrow, title, subtitle, image, compact }: Props) {
   return (
     <section className={`relative overflow-hidden ${compact ? "min-h-[42vh]" : "min-h-[58vh]"}`}>
-      <Image
-        src={image}
-        alt=""
-        fill
-        priority
-        className="object-cover"
-        sizes="100vw"
-      />
+      <MediaImage src={image} alt="" fill priority className="object-cover" sizes="100vw" />
       <div className="absolute inset-0 hero-video-overlay" />
       <div className="relative mx-auto flex max-w-7xl flex-col justify-end px-4 pb-14 pt-24 sm:px-6 lg:px-8">
         <Reveal>

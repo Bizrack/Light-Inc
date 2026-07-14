@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { INDUSTRIES } from "@/lib/content";
 import { PageHero } from "@/components/ui/PageHero";
+import { MediaImage } from "@/components/ui/MediaImage";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 
@@ -68,8 +68,8 @@ export default function WhoWeArePage() {
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-2">
-          <Reveal className="img-hover relative min-h-[460px] overflow-hidden">
-            <Image
+          <Reveal className="img-hover relative min-h-[460px] overflow-hidden bg-[#14110c]">
+            <MediaImage
               src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80"
               alt="Professionals collaborating"
               fill

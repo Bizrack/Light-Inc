@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { COMPANIES } from "@/lib/content";
 import { PageHero } from "@/components/ui/PageHero";
+import { MediaImage } from "@/components/ui/MediaImage";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { useAppStore } from "@/store/useAppStore";
@@ -59,8 +59,8 @@ export default function OurCompaniesPage() {
                   reverse ? "lg:[&>*:first-child]:order-2" : ""
                 }`}
               >
-                <Reveal className="img-hover relative min-h-[440px] overflow-hidden">
-                  <Image
+                <Reveal className="img-hover relative min-h-[440px] overflow-hidden bg-[#14110c]">
+                  <MediaImage
                     src={company.image}
                     alt={company.name}
                     fill

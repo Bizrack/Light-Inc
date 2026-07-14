@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { PageHero } from "@/components/ui/PageHero";
+import { MediaImage } from "@/components/ui/MediaImage";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 
@@ -36,8 +36,8 @@ export default function BrandsPage() {
           ))}
         </Stagger>
         <Reveal className="mt-12 grid gap-8 lg:grid-cols-2">
-          <div className="img-hover relative min-h-[420px] overflow-hidden">
-            <Image
+          <div className="img-hover relative min-h-[420px] overflow-hidden bg-[#14110c]">
+            <MediaImage
               src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80"
               alt="Solar hardware"
               fill

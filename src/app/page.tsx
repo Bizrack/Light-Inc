@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
 import { COMPANIES, COMPANY } from "@/lib/content";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
+import { MediaImage } from "@/components/ui/MediaImage";
 import { HomeHero } from "@/components/home/HomeHero";
 
 const PILLARS = [
@@ -90,9 +90,9 @@ export default function HomePage() {
               <Link
                 key={p.title}
                 href={p.href}
-                className="group relative block h-80 overflow-hidden sm:h-96"
+                className="group relative block h-80 overflow-hidden bg-[#14110c] sm:h-96"
               >
-                <Image
+                <MediaImage
                   src={p.image}
                   alt={p.title}
                   fill
@@ -140,7 +140,7 @@ export default function HomePage() {
                   open ? "flex-[3]" : "flex-[1]"
                 }`}
               >
-                <Image src={c.image} alt={c.name} fill className="object-cover" sizes="40vw" />
+                <MediaImage src={c.image} alt={c.name} fill className="object-cover" sizes="40vw" />
                 <div
                   className={`absolute inset-0 transition ${
                     open ? "bg-black/55" : "bg-black/35"
@@ -205,8 +205,8 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-        <div className="relative min-h-[420px]">
-          <Image
+        <div className="relative min-h-[420px] bg-[#14110c]">
+          <MediaImage
             src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1400&q=80"
             alt="Solar financing"
             fill
@@ -219,7 +219,7 @@ export default function HomePage() {
       {/* Sustainability band — Dangote 3-column */}
       <section className="grid lg:grid-cols-[1.1fr_1fr_0.9fr]">
         <div className="relative min-h-[440px] bg-[#0b1520] px-6 py-16 sm:px-10">
-          <Image
+          <MediaImage
             src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80"
             alt=""
             fill
@@ -289,8 +289,8 @@ export default function HomePage() {
               </Button>
             </div>
           </div>
-          <div className="relative min-h-[520px]">
-            <Image
+          <div className="relative min-h-[520px] bg-[#14110c]">
+            <MediaImage
               src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1400&q=80"
               alt="Business professionals in a modern office"
               fill

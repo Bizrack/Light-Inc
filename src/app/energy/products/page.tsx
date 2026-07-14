@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ENERGY_PRODUCTS } from "@/lib/products";
 import { PageHero } from "@/components/ui/PageHero";
+import { MediaImage } from "@/components/ui/MediaImage";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 
@@ -64,8 +64,11 @@ export default function ProductsSolutionsPage() {
           {items.map((product) => (
             <StaggerItem key={product.id}>
               <article className="flex h-full flex-col overflow-hidden border border-[var(--border)] bg-black/30">
-                <Link href={product.href} className="img-hover relative block h-72 overflow-hidden sm:h-80">
-                  <Image
+                <Link
+                  href={product.href}
+                  className="img-hover relative block h-72 overflow-hidden bg-[#14110c] sm:h-80"
+                >
+                  <MediaImage
                     src={product.image}
                     alt={product.name}
                     fill

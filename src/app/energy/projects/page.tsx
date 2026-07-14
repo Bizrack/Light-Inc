@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { PROJECTS } from "@/lib/content";
 import { PageHero } from "@/components/ui/PageHero";
+import { MediaImage } from "@/components/ui/MediaImage";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 
@@ -39,8 +39,8 @@ export default function ProjectsPage() {
               key={project.title}
               className="img-hover overflow-hidden border border-[var(--border)]"
             >
-              <div className="relative h-72 sm:h-80">
-                <Image
+              <div className="relative h-72 bg-[#14110c] sm:h-80">
+                <MediaImage
                   src={project.image}
                   alt={project.title}
                   fill

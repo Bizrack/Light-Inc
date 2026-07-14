@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 import { ENERGY_NAV } from "@/lib/content";
 import { ENERGY_PRODUCTS } from "@/lib/products";
 import { PageHero } from "@/components/ui/PageHero";
+import { MediaImage } from "@/components/ui/MediaImage";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 
@@ -81,8 +81,8 @@ export default function EnergyOverviewPage() {
                   href="/energy/products"
                   className="img-hover group block overflow-hidden border border-[var(--border)] bg-black/30"
                 >
-                  <div className="relative h-64 overflow-hidden sm:h-72">
-                    <Image
+                  <div className="relative h-64 overflow-hidden bg-[#14110c] sm:h-72">
+                    <MediaImage
                       src={product.image}
                       alt={product.name}
                       fill
@@ -128,8 +128,8 @@ export default function EnergyOverviewPage() {
               </Button>
             </div>
           </Reveal>
-          <Reveal delay={0.08} className="img-hover relative min-h-[440px] overflow-hidden">
-            <Image
+          <Reveal delay={0.08} className="img-hover relative min-h-[440px] overflow-hidden bg-[#14110c]">
+            <MediaImage
               src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1400&q=80"
               alt="Residential solar array"
               fill
