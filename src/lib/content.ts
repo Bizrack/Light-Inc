@@ -220,7 +220,7 @@ export const COMPANIES: CompanyDivision[] = [
     blurb:
       "Empowering individuals and organizations through quality education, professional development, and practical skills training for lifelong success.",
     image:
-      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1400&q=80",
     colorAccent: "#d4af37",
     services: [
       "Professional Certification Programs",
@@ -345,7 +345,7 @@ export const HOME_GALLERY = [
     label: "Healthcare",
   },
   {
-    src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80",
+    src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80",
     alt: "Education setting",
     label: "Education",
   },
