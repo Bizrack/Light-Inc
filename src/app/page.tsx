@@ -291,8 +291,8 @@ export default function HomePage() {
           </div>
           <div className="relative min-h-[520px]">
             <Image
-              src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1400&q=80"
-              alt="Engineer on site"
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1400&q=80"
+              alt="Business professionals in a modern office"
               fill
               className="object-cover"
               sizes="50vw"
