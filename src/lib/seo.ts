@@ -94,7 +94,14 @@ export function organizationJsonLd() {
       addressCountry: "NG",
       addressRegion: "Nigeria",
     },
-    sameAs: [COMPANY.whatsapp],
+    sameAs: [
+      COMPANY.whatsapp,
+      "https://x.com/LiGHTINCORP",
+      "https://www.instagram.com/lightincorporation",
+      "https://www.facebook.com/share/1Bxvm8nnCE/",
+      "https://www.threads.com/@lightincorporation",
+      "https://www.tiktok.com/@lightincorporation",
+    ],
     contactPoint: [
       {
         "@type": "ContactPoint",

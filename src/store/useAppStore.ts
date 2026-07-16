@@ -31,8 +31,19 @@ export type QuoteDraft = {
   address: string;
   need: string;
   notes: string;
-  bvn: string;
   nin: string;
+  consent: boolean;
+};
+
+export type PartnerDraft = {
+  fullName: string;
+  company: string;
+  email: string;
+  phone: string;
+  partnerType: string;
+  state: string;
+  website: string;
+  message: string;
   consent: boolean;
 };
 
@@ -66,12 +77,15 @@ type AppState = {
   user: UserPrefs;
   contactDraft: ContactDraft;
   quoteDraft: QuoteDraft;
-  /** Completed form submissions (contact / quote / newsletter) */
+  partnerDraft: PartnerDraft;
+  /** Completed form submissions (contact / quote / newsletter / partner) */
   submissions: FormSubmission[];
   setContactDraft: (draft: Partial<ContactDraft>) => void;
   resetContactDraft: () => void;
   setQuoteDraft: (draft: Partial<QuoteDraft>) => void;
   resetQuoteDraft: () => void;
+  setPartnerDraft: (draft: Partial<PartnerDraft>) => void;
+  resetPartnerDraft: () => void;
   addSubmission: (submission: FormSubmission) => void;
   clearSubmissions: () => void;
   trackPage: (path: string) => void;
@@ -109,8 +123,19 @@ export const emptyQuote: QuoteDraft = {
   address: "",
   need: "",
   notes: "",
-  bvn: "",
   nin: "",
+  consent: false,
+};
+
+export const emptyPartner: PartnerDraft = {
+  fullName: "",
+  company: "",
+  email: "",
+  phone: "",
+  partnerType: "",
+  state: "",
+  website: "",
+  message: "",
   consent: false,
 };
 
@@ -139,6 +164,7 @@ export const useAppStore = create<AppState>()(
       user: emptyUser,
       contactDraft: emptyContact,
       quoteDraft: emptyQuote,
+      partnerDraft: emptyPartner,
       submissions: [],
       setContactDraft: (draft) =>
         set((state) => ({
@@ -150,6 +176,11 @@ export const useAppStore = create<AppState>()(
           quoteDraft: { ...state.quoteDraft, ...draft },
         })),
       resetQuoteDraft: () => set({ quoteDraft: emptyQuote }),
+      setPartnerDraft: (draft) =>
+        set((state) => ({
+          partnerDraft: { ...state.partnerDraft, ...draft },
+        })),
+      resetPartnerDraft: () => set({ partnerDraft: emptyPartner }),
       addSubmission: (submission) =>
         set((state) => ({
           submissions: [submission, ...state.submissions].slice(0, MAX_SUBMISSIONS),
@@ -249,21 +280,27 @@ export const useAppStore = create<AppState>()(
         })),
     }),
     {
-      name: "light-inc-store-v3",
+      name: "light-inc-store-v4",
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         user: state.user,
         contactDraft: state.contactDraft,
         quoteDraft: state.quoteDraft,
+        partnerDraft: state.partnerDraft,
         submissions: state.submissions,
       }),
       merge: (persisted, current) => {
         const p = persisted as Partial<AppState> | undefined;
+        const legacyQuote = { ...(p?.quoteDraft || {}) } as Partial<QuoteDraft> & {
+          bvn?: string;
+        };
+        delete legacyQuote.bvn;
         return {
           ...current,
           ...p,
-          quoteDraft: { ...emptyQuote, ...p?.quoteDraft },
+          quoteDraft: { ...emptyQuote, ...legacyQuote },
           contactDraft: { ...emptyContact, ...p?.contactDraft },
+          partnerDraft: { ...emptyPartner, ...p?.partnerDraft },
           submissions: Array.isArray(p?.submissions) ? p.submissions : [],
           user: {
             ...emptyUser,

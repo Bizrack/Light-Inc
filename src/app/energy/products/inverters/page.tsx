@@ -6,7 +6,7 @@ export default function Page() {
       eyebrow="Inverters"
       title="The brain of a reliable power system."
       subtitle="Grid-tie, hybrid, and off-grid inverters engineered for efficiency and resilience."
-      image="https://images.unsplash.com/photo-1558449028-b53a11dd43cb?auto=format&fit=crop&w=1600&q=80"
+      image="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1600&q=80"
       paragraphs={[
         "Choosing the right inverter defines system behaviour. We match topology, surge capacity, and communications to your loads.",
       ]}

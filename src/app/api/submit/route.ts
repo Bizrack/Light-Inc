@@ -8,7 +8,10 @@ function isSubmitInput(body: unknown): body is SubmitInput {
   if (!body || typeof body !== "object") return false;
   const b = body as Record<string, unknown>;
   return (
-    (b.channel === "contact" || b.channel === "quote" || b.channel === "newsletter") &&
+    (b.channel === "contact" ||
+      b.channel === "quote" ||
+      b.channel === "newsletter" ||
+      b.channel === "partner") &&
     typeof b.payload === "object" &&
     b.payload !== null
   );

@@ -73,7 +73,6 @@ export function buildOutboundEmail(input: SubmitInput): OutboundEmail {
       ["Address", p.address || "—"],
       ["Need", p.need || "—"],
       ["Notes", p.notes || "—"],
-      ["BVN", p.bvn || "—"],
       ["NIN", p.nin || "—"],
       ["Consent", p.consent ? "Yes" : "No"],
     ];
@@ -83,6 +82,28 @@ export function buildOutboundEmail(input: SubmitInput): OutboundEmail {
       subject: `[Quote] ${p.packageName || p.packageId} — ${p.fullName}`,
       text: rowsToText(rows),
       html: `<h2>New solar quote application</h2>${rowsToHtml(rows)}`,
+    };
+  }
+
+  if (input.channel === "partner") {
+    const p = input.payload;
+    const rows: [string, string][] = [
+      ["Full name", p.fullName],
+      ["Company", p.company],
+      ["Email", p.email],
+      ["Phone", p.phone],
+      ["Partner type", p.partnerType],
+      ["State", p.state || "—"],
+      ["Website", p.website || "—"],
+      ["Message", p.message],
+      ["Consent", p.consent ? "Yes" : "No"],
+    ];
+    return {
+      to: ADMIN,
+      replyTo: p.email,
+      subject: `[Partner] ${p.partnerType || "Application"} — ${p.company || p.fullName}`,
+      text: rowsToText(rows),
+      html: `<h2>New partner application</h2>${rowsToHtml(rows)}`,
     };
   }
 
@@ -100,5 +121,6 @@ export function buildOutboundEmail(input: SubmitInput): OutboundEmail {
 export function channelLabel(channel: FormChannel) {
   if (channel === "contact") return "Contact enquiry";
   if (channel === "quote") return "Quote application";
+  if (channel === "partner") return "Partner application";
   return "Newsletter signup";
 }

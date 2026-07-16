@@ -8,7 +8,7 @@ import { CookieBanner } from "@/components/layout/CookieBanner";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 import { PageSkeleton } from "@/components/ui/SkeletonBlocks";
 
-const FOCUS_ROUTES = ["/energy/request-a-quote", "/apply"];
+const FOCUS_ROUTES = ["/energy/request-a-quote", "/apply", "/partner"];
 
 export function SiteShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();

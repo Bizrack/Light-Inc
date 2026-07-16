@@ -54,10 +54,6 @@ export function QuotePlatform() {
       toast.error("Please agree to the privacy terms to continue.");
       return;
     }
-    if (needsIdentity && q.bvn.replace(/\D/g, "").length !== 11) {
-      toast.error("Enter a valid 11-digit BVN for the credit check.");
-      return;
-    }
     setSubmitting(true);
     const result = await submitForm({
       channel: "quote",
@@ -76,7 +72,6 @@ export function QuotePlatform() {
         address: q.address,
         need: q.need,
         notes: q.notes,
-        bvn: q.bvn,
         nin: q.nin,
         consent: q.consent,
       },
@@ -403,30 +398,21 @@ export function QuotePlatform() {
                 />
               </section>
 
-              {/* IDENTITY */}
+              {/* Optional NIN for instalment / PAYG — no BVN */}
               {needsIdentity && (
                 <section className="rounded-xl bg-black/40 p-4 sm:p-5">
                   <h2 className="mb-3 text-[11px] tracking-[0.22em] uppercase text-[var(--fg-muted)]">
-                    Identity (for the credit check)
+                    Optional identity
                   </h2>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <Field
-                      label="BVN (11 digits)"
-                      value={q.bvn}
-                      onChange={(v) => setQ({ bvn: v })}
-                      placeholder="22XXXXXXXXX"
-                      required
-                    />
-                    <Field
-                      label="NIN (optional)"
-                      value={q.nin}
-                      onChange={(v) => setQ({ nin: v })}
-                      placeholder="11-digit NIN"
-                    />
-                  </div>
+                  <Field
+                    label="NIN (optional)"
+                    value={q.nin}
+                    onChange={(v) => setQ({ nin: v })}
+                    placeholder="11-digit NIN"
+                  />
                   <p className="mt-3 text-xs text-[var(--fg-muted)]">
-                    Your BVN is used to verify identity and run an authorised credit check. We do
-                    not store your bank login. NDPR-aligned, encrypted in transit and at rest.
+                    You may share your NIN if you want us to speed up follow-up. We never ask for
+                    BVN or bank login details.
                   </p>
                 </section>
               )}

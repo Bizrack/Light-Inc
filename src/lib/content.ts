@@ -14,6 +14,31 @@ export const NAV_LINKS = [
   { href: "/who-we-are", label: "Who We Are" },
   { href: "/our-companies", label: "Our Companies" },
   { href: "/contact", label: "Contact Us" },
+  { href: "/partner", label: "Be a Partner" },
+] as const;
+
+export const SOCIAL_LINKS = [
+  { label: "X (Twitter)", href: "https://x.com/LiGHTINCORP", network: "x" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/lightincorporation?igsh=bDJudmpncGI3Z3Y3",
+    network: "instagram",
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/share/1Bxvm8nnCE/",
+    network: "facebook",
+  },
+  {
+    label: "Threads",
+    href: "https://www.threads.com/@lightincorporation",
+    network: "threads",
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@lightincorporation?_r=1&_t=ZS-9822WIXFzBV",
+    network: "tiktok",
+  },
 ] as const;
 
 export const INDUSTRIES = [
@@ -143,6 +168,9 @@ export const COMPANIES: CompanyDivision[] = [
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80",
     colorAccent: "#c4a035",
     services: [
+      "To LET",
+      "To LEASE",
+      "For SALE",
       "Real Estate Development",
       "Property Sales & Leasing",
       "Property Management",
@@ -260,7 +288,7 @@ export const COMPANIES: CompanyDivision[] = [
     blurb:
       "Supporting the energy industry with safe, efficient, and innovative solutions across upstream, midstream, and downstream operations.",
     image:
-      "https://images.unsplash.com/photo-1513828583688-c526ac66cfd4?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=1400&q=80",
     colorAccent: "#a67c1a",
     services: [
       "Engineering Procurement & Construction (EPC)",
@@ -280,7 +308,7 @@ export const COMPANIES: CompanyDivision[] = [
     blurb:
       "Inspiring confidence and self-expression through premium fashion, timeless craftsmanship, and innovative lifestyle products.",
     image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=80",
     colorAccent: "#d4af37",
     services: [
       "Bespoke Tailoring",

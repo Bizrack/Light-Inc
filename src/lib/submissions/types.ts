@@ -1,6 +1,6 @@
 /** Shared form payloads — same shapes used by the store today and Resend later */
 
-export type FormChannel = "contact" | "quote" | "newsletter";
+export type FormChannel = "contact" | "quote" | "newsletter" | "partner";
 
 export type ContactPayload = {
   name: string;
@@ -26,7 +26,6 @@ export type QuotePayload = {
   address: string;
   need: string;
   notes: string;
-  bvn: string;
   nin: string;
   consent: boolean;
 };
@@ -35,10 +34,23 @@ export type NewsletterPayload = {
   email: string;
 };
 
+export type PartnerPayload = {
+  fullName: string;
+  company: string;
+  email: string;
+  phone: string;
+  partnerType: string;
+  state: string;
+  website: string;
+  message: string;
+  consent: boolean;
+};
+
 export type FormPayloadMap = {
   contact: ContactPayload;
   quote: QuotePayload;
   newsletter: NewsletterPayload;
+  partner: PartnerPayload;
 };
 
 export type FormSubmission<C extends FormChannel = FormChannel> = {
@@ -55,7 +67,8 @@ export type FormSubmission<C extends FormChannel = FormChannel> = {
 export type SubmitInput =
   | { channel: "contact"; payload: ContactPayload }
   | { channel: "quote"; payload: QuotePayload }
-  | { channel: "newsletter"; payload: NewsletterPayload };
+  | { channel: "newsletter"; payload: NewsletterPayload }
+  | { channel: "partner"; payload: PartnerPayload };
 
 export type SubmitResult =
   | { ok: true; submissionId: string; deliveredVia: "store" | "resend" }

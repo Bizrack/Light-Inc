@@ -39,7 +39,7 @@ export const ENERGY_PRODUCTS: EnergyProduct[] = [
     category: "Inverters",
     href: "/energy/products/inverters",
     image:
-      "https://images.unsplash.com/photo-1558449028-b53a11dd43cb?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=900&q=80",
     blurb: "Solar + battery + grid/generator hybrid for reliable home backup.",
     specs: ["5kW", "Hybrid", "App monitoring"],
     priceLabel: "Request price",
@@ -61,7 +61,7 @@ export const ENERGY_PRODUCTS: EnergyProduct[] = [
     category: "Batteries",
     href: "/energy/products/batteries",
     image:
-      "https://images.unsplash.com/photo-1593941707880-7bb4046ac2bb?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=900&q=80",
     blurb: "Modular lithium storage for night-time and outage backup.",
     specs: ["5kWh", "LiFePO4", "Expandable"],
     priceLabel: "Request price",

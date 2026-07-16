@@ -77,6 +77,36 @@ export default function OurCompaniesPage() {
                   <h3 className="mt-8 text-sm tracking-[0.16em] uppercase text-[var(--gold)]">
                     Core Services
                   </h3>
+                  {company.slug === "real-estate" ? (
+                    <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                      {[
+                        {
+                          title: "To LET",
+                          text: "Residential and commercial spaces available to let.",
+                        },
+                        {
+                          title: "To LEASE",
+                          text: "Longer-term lease options for offices, retail, and mixed-use.",
+                        },
+                        {
+                          title: "For SALE",
+                          text: "Homes, plots, and investment properties ready for purchase.",
+                        },
+                      ].map((item) => (
+                        <div
+                          key={item.title}
+                          className="border border-[var(--border)] bg-black/25 px-4 py-5"
+                        >
+                          <p className="font-display text-xl text-[var(--gold-bright)]">
+                            {item.title}
+                          </p>
+                          <p className="mt-2 text-xs leading-relaxed text-[var(--fg-muted)]">
+                            {item.text}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
                   <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                     {company.services.map((service) => (
                       <li

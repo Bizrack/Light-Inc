@@ -1,16 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Factory, Globe2, HardHat } from "lucide-react";
 import { COMPANY } from "@/lib/content";
 import { Button } from "@/components/ui/Button";
-import { MediaImage } from "@/components/ui/MediaImage";
 
 const INTRO =
   "LiGHT Incorporation is a diversified engineering and technology company delivering innovative solutions across renewable energy, infrastructure, construction, and emerging industries. We partner with businesses, governments, and communities to build sustainable systems that improve lives and drive long-term growth.";
 
-/** Dangote-style: full-bleed media, centered uppercase headline, one CTA, floating stats */
+/**
+ * Local solar farm / installation assets from /public/images
+ * objectPosition keeps panels in frame (avoids sky-only crops).
+ */
 const SLIDES = [
   {
     id: "1",
@@ -18,79 +21,151 @@ const SLIDES = [
     tagline: COMPANY.tagline,
     text: INTRO,
     cta: { href: "/apply", label: "See My Estimate →" },
-    image:
-      "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=2000&q=80",
-    video:
-      "https://cdn.coverr.co/videos/coverr-solar-panels-on-a-rooftop-5684/1080p.mp4",
+    image: "/images/photo-1541888946425-d81bb19240f5.webp",
+    objectPosition: "center 72%",
   },
   {
     id: "2",
-    title: "Powering Africa's Industrial Transformation",
-    tagline: null,
-    text: null,
-    cta: { href: "/our-companies", label: "Explore Our Businesses →" },
-    image:
-      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2000&q=80",
+    title: "Energy That Works Where You Live",
+    tagline: COMPANY.tagline,
+    text: "Rooftop and commercial installs that cut diesel reliance and keep power flowing.",
+    cta: { href: "/apply", label: "See My Estimate →" },
+    image: "/images/bill-mead-wmaP3Tl80ww-unsplash.jpg",
+    objectPosition: "left 55%",
   },
   {
     id: "3",
+    title: "Clean Energy Construction in Progress",
+    tagline: "Engineering · Installation · Commissioning",
+    text: "On-site solar installation and field engineering that turn rooftops and land into reliable power.",
+    cta: { href: "/apply", label: "Get a Quote →" },
+    image: "/images/ricardo-gomez-angel-MagdWoazARo-unsplash.jpg",
+    objectPosition: "center center",
+  },
+  {
+    id: "4",
+    title: "Powering Africa's Industrial Transformation",
+    tagline: "Solar farms · Clean energy · Infrastructure",
+    text: "Utility-scale and commercial solar arrays engineered, built, and commissioned for lasting generation.",
+    cta: { href: "/our-companies", label: "Explore Our Businesses →" },
+    image: "/images/zbynek-burival-V4ZYJZJ3W4M-unsplash.jpg",
+    objectPosition: "left 60%",
+  },
+  {
+    id: "5",
+    title: "Solar Farms Built for Tomorrow",
+    tagline: "From ground works to grid connection",
+    text: "Construction crews, mounting systems, and panel arrays — delivering bankable renewable assets across Nigeria and beyond.",
+    cta: { href: "/energy/projects", label: "Explore Our Projects →" },
+    image: "/images/benjamin-peck-1lsoCjbLm3I-unsplash.jpg",
+    objectPosition: "center 55%",
+  },
+  {
+    id: "6",
+    title: "Clean Energy Across the Horizon",
+    tagline: "Utility-scale · Bankable · Built to last",
+    text: "Rows of generation stretching to the horizon — solar infrastructure that powers industry and communities.",
+    cta: { href: "/energy", label: "Explore LiGHT Energy →" },
+    image: "/images/manny-becerra-NgdhrwAx0J8-unsplash.jpg",
+    objectPosition: "center 55%",
+  },
+  {
+    id: "7",
     title: "Building for Tomorrow, Today",
     tagline: COMPANY.tagline,
     text: "Where everyone has the opportunity to thrive — across renewable energy, agriculture, infrastructure, and emerging industries.",
     cta: { href: "/who-we-are", label: "Who We Are →" },
-    image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80",
+    image: "/images/michael-pointner-OZ0ZEAm_PbE-unsplash.jpg",
+    objectPosition: "center 65%",
   },
-];
+  {
+    id: "8",
+    title: "Panels That Power Progress",
+    tagline: "Solar · Storage · Systems that stay",
+    text: "High-performance arrays sized for homes, businesses, and communities — installed with precision.",
+    cta: { href: "/energy", label: "Explore LiGHT Energy →" },
+    image: "/images/jeroen-van-de-water-aQOzmgcT6sI-unsplash.jpg",
+    objectPosition: "center 45%",
+  },
+  {
+    id: "9",
+    title: "From Field to Grid Connection",
+    tagline: "Renewable power that stays",
+    text: "Precision installs and durable arrays — solar systems designed for real-world performance.",
+    cta: { href: "/energy/projects", label: "Explore Our Projects →" },
+    image: "/images/istvan-hernek-tOKF2VSdpJM-unsplash.jpg",
+    objectPosition: "center 70%",
+  },
+  {
+    id: "10",
+    title: "Solar Engineering at Every Scale",
+    tagline: "Homes · Businesses · Communities",
+    text: "From close-up craftsmanship to full-site arrays — LiGHT Energy builds systems that perform.",
+    cta: { href: "/contact", label: "Contact Us →" },
+    image: "/images/michael-roberts-U0ys6tX7UMU-unsplash.jpg",
+    objectPosition: "center 60%",
+  },
+  {
+    id: "11",
+    title: "Infrastructure That Powers Growth",
+    tagline: "Engineering · Construction · Impact",
+    text: "On-site teams delivering the systems that power businesses, communities, and the future.",
+    cta: { href: "/our-companies", label: "Explore Our Companies →" },
+    image: "/images/asia-chang-Yr-PvhKiorM-unsplash.jpg",
+    objectPosition: "left center",
+  },
+] as const;
+
+const AUTO_MS = 14000;
+const CROSSFADE_MS = 1200;
 
 export function HomeHero() {
   const [index, setIndex] = useState(0);
   const slide = SLIDES[index];
 
-  useEffect(() => {
-    const t = setInterval(() => setIndex((i) => (i + 1) % SLIDES.length), 9000);
-    return () => clearInterval(t);
+  const go = useCallback((next: number) => {
+    setIndex(((next % SLIDES.length) + SLIDES.length) % SLIDES.length);
   }, []);
 
+  useEffect(() => {
+    const t = setInterval(() => go(index + 1), AUTO_MS);
+    return () => clearInterval(t);
+  }, [index, go]);
+
   return (
-    <section className="relative h-[100svh] min-h-[680px] overflow-hidden">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={slide.id}
-          className="absolute inset-0"
-          initial={{ opacity: 0, scale: 1.06 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.05 }}
-        >
-          {"video" in slide && slide.video ? (
-            <video
-              className="absolute inset-0 h-full w-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster={slide.image}
-            >
-              <source src={slide.video} type="video/mp4" />
-            </video>
-          ) : null}
-          <MediaImage
-            src={slide.image}
-            alt=""
-            fill
-            priority={index === 0}
-            className={`object-cover ${"video" in slide && slide.video ? "-z-10" : ""}`}
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 hero-video-overlay" />
-        </motion.div>
-      </AnimatePresence>
+    <section className="relative h-[100svh] min-h-[680px] overflow-hidden bg-[#0a0a0a]">
+      {/* Stacked crossfade — previous image stays visible under the next (no black gap) */}
+      <div className="absolute inset-0">
+        {SLIDES.map((s, i) => (
+          <div
+            key={s.id}
+            className="absolute inset-0 transition-opacity ease-in-out"
+            style={{
+              opacity: i === index ? 1 : 0,
+              transitionDuration: `${CROSSFADE_MS}ms`,
+              zIndex: i === index ? 2 : 1,
+              pointerEvents: "none",
+            }}
+            aria-hidden={i !== index}
+          >
+            <Image
+              src={s.image}
+              alt=""
+              fill
+              priority={i <= 1}
+              className="object-cover"
+              style={{ objectPosition: s.objectPosition }}
+              sizes="100vw"
+            />
+          </div>
+        ))}
+        <div className="pointer-events-none absolute inset-0 z-[3] hero-video-overlay" />
+      </div>
 
       <button
         type="button"
         aria-label="Previous"
-        onClick={() => setIndex((i) => (i - 1 + SLIDES.length) % SLIDES.length)}
+        onClick={() => go(index - 1)}
         className="absolute left-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center bg-black/45 text-white sm:left-6"
       >
         <ChevronLeft className="h-6 w-6" />
@@ -98,7 +173,7 @@ export function HomeHero() {
       <button
         type="button"
         aria-label="Next"
-        onClick={() => setIndex((i) => (i + 1) % SLIDES.length)}
+        onClick={() => go(index + 1)}
         className="absolute right-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center bg-black/45 text-white sm:right-6"
       >
         <ChevronRight className="h-6 w-6" />
@@ -108,10 +183,10 @@ export function HomeHero() {
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.id + "-copy"}
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.55 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="mx-auto flex max-w-5xl flex-col items-center"
           >
             {slide.tagline ? (
@@ -141,7 +216,7 @@ export function HomeHero() {
               key={s.id}
               type="button"
               aria-label={`Slide ${i + 1}`}
-              onClick={() => setIndex(i)}
+              onClick={() => go(i)}
               className={`h-1.5 transition-all ${
                 i === index ? "w-10 bg-[var(--gold)]" : "w-4 bg-white/40"
               }`}
@@ -150,7 +225,6 @@ export function HomeHero() {
         </div>
       </div>
 
-      {/* Floating stats — Dangote pattern, taller card */}
       <div className="absolute right-0 bottom-0 z-20 hidden w-[min(100%,320px)] bg-[var(--gold)] px-6 py-8 text-black shadow-2xl sm:right-0 md:block lg:w-[340px] lg:py-10">
         <div className="flex items-start gap-4 border-b border-black/20 pb-5">
           <Globe2 className="mt-0.5 h-6 w-6 shrink-0" />
