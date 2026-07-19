@@ -23,9 +23,9 @@ const ROLES = [
     type: "Full-time",
   },
   {
-    title: "Business Development Associates",
+    title: "Join Our Team",
     team: "Group",
-    type: "Full-time",
+    type: "Open — if you don’t see a fit above",
   },
 ];
 
@@ -82,14 +82,6 @@ export default function CareersPage() {
               </Reveal>
             ))}
           </div>
-          <Reveal className="mt-10 text-center">
-            <p className="text-[var(--fg-muted)]">
-              Do not see a fit? Send your CV to{" "}
-              <a className="text-[var(--gold-bright)] underline" href={`mailto:${COMPANY.email}`}>
-                {COMPANY.email}
-              </a>
-            </p>
-          </Reveal>
         </div>
       </section>
     </>

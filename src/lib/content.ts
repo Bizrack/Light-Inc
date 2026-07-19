@@ -4,7 +4,7 @@ export const COMPANY = {
   tagline: "Beyond Greatness. Building Tomorrow, Today.",
   phone: "+234 905 891 1060",
   phoneTel: "+2349058911060",
-  email: "lightincorporationglobal@gmail.com",
+  email: "leesamsmart@gmail.com",
   whatsapp: "https://wa.me/2349058911060",
   address: "Nigeria · Serving Africa & Beyond",
 };
@@ -15,6 +15,7 @@ export const NAV_LINKS = [
   { href: "/our-companies", label: "Our Companies" },
   { href: "/contact", label: "Contact Us" },
   { href: "/partner", label: "Be a Partner" },
+  { href: "/careers", label: "Careers" },
 ] as const;
 
 export const SOCIAL_LINKS = [

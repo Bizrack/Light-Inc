@@ -85,12 +85,12 @@ export default function HomePage() {
             </h2>
             <div className="mt-3 h-1 w-16 bg-[var(--gold)]" />
           </Reveal>
-          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {PILLARS.map((p) => (
+          <div className="-mx-4 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:-mx-6 sm:px-6 md:mx-0 md:mt-10 md:grid md:grid-cols-2 md:gap-3 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3">
+            {PILLARS.map((p, index) => (
               <Link
                 key={p.title}
                 href={p.href}
-                className="group relative block h-80 overflow-hidden bg-[#14110c] sm:h-96"
+                className="group relative block h-[26rem] w-[84vw] max-w-[22rem] shrink-0 snap-center overflow-hidden bg-[#14110c] first:snap-start last:snap-end md:h-96 md:w-auto md:max-w-none"
               >
                 <MediaImage
                   src={p.image}
@@ -100,6 +100,9 @@ export default function HomePage() {
                   sizes="33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                <span className="absolute top-4 right-4 border border-white/30 bg-black/35 px-2.5 py-1 text-[10px] tracking-[0.18em] text-white/80 md:hidden">
+                  {String(index + 1).padStart(2, "0")} / {String(PILLARS.length).padStart(2, "0")}
+                </span>
                 <div className="absolute inset-x-0 bottom-0 p-5">
                   <h3 className="font-display text-xl text-[var(--gold-bright)]">{p.title}</h3>
                   <p className="mt-2 line-clamp-2 text-sm text-white/80">{p.text}</p>
@@ -126,7 +129,43 @@ export default function HomePage() {
           </Reveal>
         </div>
 
-        <div className="mt-10 flex h-[520px] w-full overflow-hidden md:h-[600px]">
+        <div className="mt-7 px-4 sm:px-6 md:hidden">
+          <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-5 sm:-mx-6 sm:px-6">
+            {COMPANIES.map((company, index) => (
+              <Link
+                key={company.slug}
+                href={company.slug === "energy" ? "/energy" : `/our-companies#${company.slug}`}
+                className="group relative h-[29rem] w-[84vw] max-w-[22rem] shrink-0 snap-center overflow-hidden bg-[#14110c] first:snap-start last:snap-end"
+              >
+                <MediaImage
+                  src={company.image}
+                  alt={company.name}
+                  fill
+                  className="object-cover transition duration-700 group-hover:scale-105"
+                  sizes="84vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/10" />
+                <span className="absolute top-4 right-4 border border-white/30 bg-black/35 px-2.5 py-1 text-[10px] tracking-[0.18em] text-white/80">
+                  {String(index + 1).padStart(2, "0")} / {String(COMPANIES.length).padStart(2, "0")}
+                </span>
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/90 to-transparent p-6 pt-20">
+                  <p className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[var(--gold)]">
+                    LiGHT division
+                  </p>
+                  <h3 className="font-display mt-2 text-2xl text-white">{company.name}</h3>
+                  <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-white/75">
+                    {company.blurb}
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold tracking-wide uppercase text-[var(--gold-bright)]">
+                    Explore company <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-10 hidden h-[600px] w-full overflow-hidden md:flex">
           {FEATURED.map((c, i) => {
             const open = activeBiz === i;
             return (
@@ -199,13 +238,14 @@ export default function HomePage() {
           <div className="mt-8">
             <Link
               href="/apply"
-              className="inline-flex bg-black px-5 py-3 text-sm font-semibold uppercase tracking-wide text-[var(--gold)]"
+              style={{ color: "var(--gold-bright)" }}
+              className="inline-flex bg-black px-5 py-3 text-sm font-semibold uppercase tracking-wide"
             >
               Get Your Quote →
             </Link>
           </div>
         </div>
-        <div className="relative min-h-[420px] bg-[#14110c]">
+        <div className="relative hidden min-h-[420px] bg-[#14110c] lg:block">
           <MediaImage
             src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1400&q=80"
             alt="Solar financing"
@@ -251,25 +291,29 @@ export default function HomePage() {
             ))}
           </ul>
         </div>
-        <div className="bg-[#f0ebe0] px-6 py-16 text-black sm:px-10">
-          <p className="font-display text-4xl font-semibold">500+</p>
-          <p className="mt-2 text-sm font-semibold">Projects Delivered</p>
-          <p className="mt-2 text-xs text-black/70">
-            Across energy, infrastructure, and emerging industries.
-          </p>
-          <div className="my-8 h-px bg-black/15" />
-          <p className="font-display text-4xl font-semibold">12+</p>
-          <p className="mt-2 text-sm font-semibold">Group Companies</p>
-          <p className="mt-2 text-xs text-black/70">
-            One partner. Specialised expertise under LiGHT Incorporation.
-          </p>
+        <div className="grid grid-cols-2 bg-[var(--gold)] px-6 py-10 text-black sm:px-10 lg:block lg:bg-[#f0ebe0] lg:py-16">
+          <div className="pr-5 lg:pr-0">
+            <p className="font-display text-4xl font-semibold">500+</p>
+            <p className="mt-2 text-sm font-semibold">Projects Delivered</p>
+            <p className="mt-2 hidden text-xs text-black/70 lg:block">
+              Across energy, infrastructure, and emerging industries.
+            </p>
+          </div>
+          <div className="border-l border-black/20 pl-5 lg:border-0 lg:pl-0">
+            <div className="my-8 hidden h-px bg-black/15 lg:block" />
+            <p className="font-display text-4xl font-semibold">12+</p>
+            <p className="mt-2 text-sm font-semibold">Group Companies</p>
+            <p className="mt-2 hidden text-xs text-black/70 lg:block">
+              One partner. Specialised expertise under LiGHT Incorporation.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Portrait strip closing — Dangote-like */}
       <section className="relative overflow-hidden">
         <div className="grid lg:grid-cols-2">
-          <div className="flex flex-col justify-center bg-black px-6 py-20 sm:px-12">
+          <div className="relative z-10 col-start-1 row-start-1 flex min-h-[620px] flex-col justify-end bg-gradient-to-t from-black via-black/75 to-black/10 px-6 py-16 sm:px-12 lg:min-h-0 lg:justify-center lg:bg-black lg:bg-none lg:py-20">
             <p className="text-xs tracking-[0.24em] uppercase text-[var(--gold)]">
               {COMPANY.tagline}
             </p>
@@ -289,13 +333,13 @@ export default function HomePage() {
               </Button>
             </div>
           </div>
-          <div className="relative min-h-[520px] bg-[#14110c]">
+          <div className="relative col-start-1 row-start-1 min-h-[620px] bg-[#14110c] lg:col-start-2 lg:min-h-[520px]">
             <MediaImage
               src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1400&q=80"
               alt="Business professionals in a modern office"
               fill
               className="object-cover"
-              sizes="50vw"
+              sizes="(max-width: 1023px) 100vw, 50vw"
             />
           </div>
         </div>

@@ -10,114 +10,92 @@ import { Button } from "@/components/ui/Button";
 const INTRO =
   "LiGHT Incorporation is a diversified engineering and technology company delivering innovative solutions across renewable energy, infrastructure, construction, and emerging industries. We partner with businesses, governments, and communities to build sustainable systems that improve lives and drive long-term growth.";
 
-/**
- * Local solar farm / installation assets from /public/images
- * objectPosition keeps panels in frame (avoids sky-only crops).
- */
 const SLIDES = [
   {
-    id: "1",
+    id: "group",
     title: "Building Solutions That Power Businesses, Communities, and the Future.",
+    mobileTitle: "Powering a Better Tomorrow",
     tagline: COMPANY.tagline,
     text: INTRO,
-    cta: { href: "/apply", label: "See My Estimate →" },
+    mobileText: "Engineering and technology solutions that improve lives and drive lasting growth.",
+    cta: { href: "/our-companies", label: "Explore Our Companies →" },
     image: "/images/photo-1541888946425-d81bb19240f5.webp",
     objectPosition: "center 72%",
   },
   {
-    id: "2",
-    title: "Energy That Works Where You Live",
-    tagline: COMPANY.tagline,
-    text: "Rooftop and commercial installs that cut diesel reliance and keep power flowing.",
-    cta: { href: "/apply", label: "See My Estimate →" },
+    id: "energy",
+    title: "Reliable Energy for Everyday Life",
+    mobileTitle: "Reliable Energy for Everyday Life",
+    tagline: "LiGHT Energy",
+    text: "Renewable power, storage, and engineering solutions for homes, businesses, and communities.",
+    mobileText: "Reliable renewable power for homes, businesses, and communities.",
+    cta: { href: "/energy", label: "Explore LiGHT Energy →" },
     image: "/images/bill-mead-wmaP3Tl80ww-unsplash.jpg",
     objectPosition: "left 55%",
   },
   {
-    id: "3",
-    title: "Clean Energy Construction in Progress",
-    tagline: "Engineering · Installation · Commissioning",
-    text: "On-site solar installation and field engineering that turn rooftops and land into reliable power.",
-    cta: { href: "/apply", label: "Get a Quote →" },
-    image: "/images/ricardo-gomez-angel-MagdWoazARo-unsplash.jpg",
+    id: "healthcare",
+    title: "Better Healthcare, Healthier Communities",
+    mobileTitle: "Healthcare for Healthier Communities",
+    tagline: "LiGHT Healthcare",
+    text: "Accessible, patient-centred healthcare services and technology designed to improve lives.",
+    mobileText: "Accessible healthcare and technology designed to improve lives.",
+    cta: { href: "/our-companies#healthcare", label: "Explore LiGHT Healthcare →" },
+    image:
+      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2000&q=85",
     objectPosition: "center center",
   },
   {
-    id: "4",
-    title: "Powering Africa's Industrial Transformation",
-    tagline: "Solar farms · Clean energy · Infrastructure",
-    text: "Utility-scale and commercial solar arrays engineered, built, and commissioned for lasting generation.",
-    cta: { href: "/our-companies", label: "Explore Our Businesses →" },
-    image: "/images/zbynek-burival-V4ZYJZJ3W4M-unsplash.jpg",
-    objectPosition: "left 60%",
+    id: "academy",
+    title: "Skills That Create New Possibilities",
+    mobileTitle: "Skills That Create Possibilities",
+    tagline: "LiGHT Academy",
+    text: "Practical education, professional development, and digital skills for lifelong success.",
+    mobileText: "Practical education and digital skills for lifelong success.",
+    cta: { href: "/our-companies#academy", label: "Explore LiGHT Academy →" },
+    image:
+      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=2000&q=85",
+    objectPosition: "center 48%",
   },
   {
-    id: "5",
+    id: "construction",
+    title: "Infrastructure Built to Endure",
+    mobileTitle: "Infrastructure Built to Endure",
+    tagline: "LiGHT Construction",
+    text: "Quality construction and engineering that shape resilient infrastructure and thriving communities.",
+    mobileText: "Quality construction for resilient, thriving communities.",
+    cta: { href: "/our-companies#construction", label: "Explore LiGHT Construction →" },
+    image:
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2000&q=85",
+    objectPosition: "center 58%",
+  },
+  {
+    id: "real-estate",
+    title: "Spaces Designed for Lasting Value",
+    mobileTitle: "Spaces Designed for Lasting Value",
+    tagline: "LiGHT Real Estate",
+    text: "Exceptional residential, commercial, and mixed-use developments created for how people live and work.",
+    mobileText: "Exceptional spaces created for how people live and work.",
+    cta: { href: "/our-companies#real-estate", label: "Explore LiGHT Real Estate →" },
+    image:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85",
+    objectPosition: "center center",
+  },
+  {
+    id: "solar-farms",
     title: "Solar Farms Built for Tomorrow",
-    tagline: "From ground works to grid connection",
-    text: "Construction crews, mounting systems, and panel arrays — delivering bankable renewable assets across Nigeria and beyond.",
-    cta: { href: "/energy/projects", label: "Explore Our Projects →" },
+    mobileTitle: "Solar Farms Built for Tomorrow",
+    tagline: "LiGHT Energy · Utility-scale solar",
+    text: "Bankable renewable infrastructure engineered from ground works through grid connection.",
+    mobileText: "Renewable infrastructure engineered from ground works to grid.",
+    cta: { href: "/energy/projects", label: "Explore Solar Projects →" },
     image: "/images/benjamin-peck-1lsoCjbLm3I-unsplash.jpg",
     objectPosition: "center 55%",
   },
-  {
-    id: "6",
-    title: "Clean Energy Across the Horizon",
-    tagline: "Utility-scale · Bankable · Built to last",
-    text: "Rows of generation stretching to the horizon — solar infrastructure that powers industry and communities.",
-    cta: { href: "/energy", label: "Explore LiGHT Energy →" },
-    image: "/images/manny-becerra-NgdhrwAx0J8-unsplash.jpg",
-    objectPosition: "center 55%",
-  },
-  {
-    id: "7",
-    title: "Building for Tomorrow, Today",
-    tagline: COMPANY.tagline,
-    text: "Where everyone has the opportunity to thrive — across renewable energy, agriculture, infrastructure, and emerging industries.",
-    cta: { href: "/who-we-are", label: "Who We Are →" },
-    image: "/images/michael-pointner-OZ0ZEAm_PbE-unsplash.jpg",
-    objectPosition: "center 65%",
-  },
-  {
-    id: "8",
-    title: "Panels That Power Progress",
-    tagline: "Solar · Storage · Systems that stay",
-    text: "High-performance arrays sized for homes, businesses, and communities — installed with precision.",
-    cta: { href: "/energy", label: "Explore LiGHT Energy →" },
-    image: "/images/jeroen-van-de-water-aQOzmgcT6sI-unsplash.jpg",
-    objectPosition: "center 45%",
-  },
-  {
-    id: "9",
-    title: "From Field to Grid Connection",
-    tagline: "Renewable power that stays",
-    text: "Precision installs and durable arrays — solar systems designed for real-world performance.",
-    cta: { href: "/energy/projects", label: "Explore Our Projects →" },
-    image: "/images/istvan-hernek-tOKF2VSdpJM-unsplash.jpg",
-    objectPosition: "center 70%",
-  },
-  {
-    id: "10",
-    title: "Solar Engineering at Every Scale",
-    tagline: "Homes · Businesses · Communities",
-    text: "From close-up craftsmanship to full-site arrays — LiGHT Energy builds systems that perform.",
-    cta: { href: "/contact", label: "Contact Us →" },
-    image: "/images/michael-roberts-U0ys6tX7UMU-unsplash.jpg",
-    objectPosition: "center 60%",
-  },
-  {
-    id: "11",
-    title: "Infrastructure That Powers Growth",
-    tagline: "Engineering · Construction · Impact",
-    text: "On-site teams delivering the systems that power businesses, communities, and the future.",
-    cta: { href: "/our-companies", label: "Explore Our Companies →" },
-    image: "/images/asia-chang-Yr-PvhKiorM-unsplash.jpg",
-    objectPosition: "left center",
-  },
 ] as const;
 
-const AUTO_MS = 14000;
-const CROSSFADE_MS = 1200;
+const AUTO_MS = 7000;
+const CROSSFADE_MS = 900;
 
 export function HomeHero() {
   const [index, setIndex] = useState(0);
@@ -152,7 +130,7 @@ export function HomeHero() {
               src={s.image}
               alt=""
               fill
-              priority={i <= 1}
+              priority={i === 0}
               className="object-cover"
               style={{ objectPosition: s.objectPosition }}
               sizes="100vw"
@@ -179,7 +157,7 @@ export function HomeHero() {
         <ChevronRight className="h-6 w-6" />
       </button>
 
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 pb-24 pt-20 text-center sm:px-8">
+      <div className="relative z-10 flex h-full flex-col items-center justify-start px-4 pb-24 pt-32 text-center sm:px-8 sm:pt-36 md:justify-center md:pt-20">
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.id + "-copy"}
@@ -194,15 +172,17 @@ export function HomeHero() {
                 {slide.tagline}
               </p>
             ) : null}
-            <h1 className="font-display text-3xl leading-[1.12] font-semibold tracking-wide text-white uppercase sm:text-5xl md:text-6xl lg:text-[3.4rem]">
-              {slide.title}
+            <h1 className="font-display text-2xl leading-[1.12] font-semibold tracking-wide text-white uppercase sm:text-4xl md:text-6xl lg:text-[3.4rem]">
+              <span className="md:hidden">{slide.mobileTitle}</span>
+              <span className="hidden md:inline">{slide.title}</span>
             </h1>
             {slide.text ? (
-              <p className="mt-5 max-w-3xl text-sm leading-relaxed text-white/85 sm:text-base">
-                {slide.text}
+              <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/85 sm:text-base md:mt-5">
+                <span className="md:hidden">{slide.mobileText}</span>
+                <span className="hidden md:inline">{slide.text}</span>
               </p>
             ) : null}
-            <div className="mt-9">
+            <div className="mt-7 md:mt-9">
               <Button href={slide.cta.href} className="!rounded-none !px-7 !py-3.5 uppercase tracking-wide">
                 {slide.cta.label}
               </Button>
