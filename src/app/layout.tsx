@@ -96,7 +96,7 @@ export const metadata: Metadata = {
   },
   other: {
     "og:phone_number": "+2349058911060",
-    "og:email": "leesamsmart@gmail.com",
+    "og:email": "support@lightincorporation.com",
   },
 };
 

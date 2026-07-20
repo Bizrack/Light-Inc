@@ -4,7 +4,7 @@ export const COMPANY = {
   tagline: "Beyond Greatness. Building Tomorrow, Today.",
   phone: "+234 905 891 1060",
   phoneTel: "+2349058911060",
-  email: "leesamsmart@gmail.com",
+  email: "support@lightincorporation.com",
   whatsapp: "https://wa.me/2349058911060",
   address: "Nigeria · Serving Africa & Beyond",
 };
